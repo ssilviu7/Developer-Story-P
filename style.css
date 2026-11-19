@@ -4,14 +4,29 @@
 }
 
 .screen {
-   width: 70vw;
+   width: 90vw;
   height: 60vh;
   display: flex;
   position: relative;
   border: 1px solid black;
 }
 
- .endScreen,
+ .loseScreen,
+ .winScreen,
 .gameScreen {
 display: none;
 } 
+
+.startScreen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 95vh;
+}
