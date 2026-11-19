@@ -6,7 +6,13 @@ const startBtn = document.querySelector(".startBtn");
 
 let game;
 
-startBtn.addEventListener("click", () => {
-  game = new Game();
-  game.startGame()
+window.addEventListener("load", () => {
+  startBtn.addEventListener("click", () => {
+    game = new Game();
+    game.startGame();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    console.log(e.key);
+  });
 });
