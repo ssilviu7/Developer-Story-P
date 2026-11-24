@@ -4,8 +4,8 @@ class Player {
     this.element = document.createElement("div");
     this.x = 0;
     this.y = 50;
-    this.width = 90;
-    this.height = 90;
+    this.width = 115;
+    this.height = 115;
     this.studentimg = "../images/student3.png";
 
     this.element.style.position = "absolute";
@@ -23,28 +23,28 @@ class Player {
 
   moveDown() {
     if (this.y <= 86) {
-      this.y += 2;
+      this.y += 1.8;
       this.element.style.top = `${this.y}%`;
     }
   }
 
   moveUp() {
     if (this.y >= 1) {
-      this.y -= 2;
+      this.y -= 1.8;
       this.element.style.top = `${this.y}%`;
     }
   }
 
   moveLeft() {
     if (this.x >= 0) {
-      this.x -= 2;
+      this.x -= 1.8;
       this.element.style.left = `${this.x}%`;
     }
   }
 
   moveRight() {
     if (this.x <= 82) {
-      this.x += 2;
+      this.x += 1.8;
       this.element.style.left = `${this.x}%`;
     }
   }

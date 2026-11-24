@@ -4,8 +4,8 @@ class Enemy {
     this.element = document.createElement("div");
     this.x = 96;
     this.y = Math.floor(Math.random() * 95);
-    this.width = 50;
-    this.height = 50;
+    this.width = 60;
+    this.height = 60;
     this.enemyimage = "../images/errorenemy.png";
 
     this.element.style.position = "absolute";
@@ -19,5 +19,9 @@ class Enemy {
     this.element.style.backgroundSize = "cover";
 
     this.gameScreen.appendChild(this.element);
+  }
+  move() {
+    this.x -= 0.5;
+    this.element.style.left = `${this.x}%`;
   }
 }
