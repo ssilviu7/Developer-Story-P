@@ -24,14 +24,16 @@ class Game {
     }, 20);
   }
   animate() {
-    this.enemies.forEach((enemy, i) => {
+    for( let i = this.enemies.length - 1; i >= 0; i--) {
+      const enemy = this.enemies[i];
       if (enemy.x <= 0) {
         this.enemies.splice(i, 1);
         enemy.element.remove();
+        continue;
       }
       enemy.move();
       this.checkCollision(this.player, enemy);
-    });
+    };
   }
 
   spawnEnemy() {
@@ -39,15 +41,18 @@ class Game {
   }
 
   checkCollision(player, enemy) {
+    const p = player.element.getBoundingClientRect();
+    const e = enemy.element.getBoundingClientRect();
     if (
-      player.x < enemy.x + enemy.width &&
-      player.x + player.width > enemy.x &&
-      player.y < enemy.y + enemy.height &&
-      player.y + player.height > enemy.y
+      p.left < e.right &&
+      p.right > e.left &&
+      p.top < e.bottom &&
+      p.bottom > e.top
     ) {
       clearInterval(this.enemyInterval);
       clearInterval(this.animationInterval);
       this.gameOver();
+      console.log(player.x, player.width, enemy.x, enemy.width);
     }
   }
   gameOver() {
