@@ -21,8 +21,31 @@ class Player {
     this.gameScreen.appendChild(this.element);
   }
 
-  move() {
-    this.element.style.top = `${this.y}%`;
-    this.element.style.left = `${this.x}%`;
+  moveDown() {
+    if (this.y <= 86) {
+      this.y += 2;
+      this.element.style.top = `${this.y}%`;
+    }
+  }
+
+  moveUp() {
+    if (this.y >= 1) {
+      this.y -= 2;
+      this.element.style.top = `${this.y}%`;
+    }
+  }
+
+  moveLeft() {
+    if (this.x >= 0) {
+      this.x -= 2;
+      this.element.style.left = `${this.x}%`;
+    }
+  }
+
+  moveRight() {
+    if (this.x <= 82) {
+      this.x += 2;
+      this.element.style.left = `${this.x}%`;
+    }
   }
 }
