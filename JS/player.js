@@ -4,8 +4,8 @@ class Player {
     this.element = document.createElement("div");
     this.x = 0;
     this.y = 50;
-    this.width = 100;
-    this.height = 100;
+    this.width = 90;
+    this.height = 90;
     this.studentimg = "../images/student3.png";
 
     this.element.style.position = "absolute";
