@@ -2,6 +2,7 @@ class Player {
   constructor() {
     this.gameScreen = document.querySelector(".gameScreen");
     this.element = document.createElement("div");
+    this.element.classList.add("player");
     this.x = 0;
     this.y = 50;
     this.width = 115;

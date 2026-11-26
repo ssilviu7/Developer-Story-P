@@ -4,10 +4,13 @@ class Game {
     this.gameScreen = document.querySelector(".gameScreen");
     this.loseScreen = document.querySelector(".loseScreen");
     this.winScreen = document.querySelector(".winScreen");
+    this.livesElement = document.querySelector(".livesDisplay");
     this.player = null;
     this.enemies = [];
     this.enemyInterval = null;
     this.animationInterval = null;
+    this.lives = 3;
+    this.updateHearts();
   }
 
   startGame() {
@@ -23,8 +26,16 @@ class Game {
       this.animate();
     }, 20);
   }
+
+  updateHearts() {
+    const remainingLives = Math.max(0, this.lives);
+    const lostLives = 3 - remainingLives;
+    this.livesElement.textContent =
+      "💚".repeat(remainingLives) + "🖤".repeat(lostLives);
+  }
+
   animate() {
-    for( let i = this.enemies.length - 1; i >= 0; i--) {
+    for (let i = this.enemies.length - 1; i >= 0; i--) {
       const enemy = this.enemies[i];
       if (enemy.x <= 0) {
         this.enemies.splice(i, 1);
@@ -33,7 +44,7 @@ class Game {
       }
       enemy.move();
       this.checkCollision(this.player, enemy);
-    };
+    }
   }
 
   spawnEnemy() {
@@ -49,10 +60,16 @@ class Game {
       p.top < e.bottom &&
       p.bottom > e.top
     ) {
-      clearInterval(this.enemyInterval);
-      clearInterval(this.animationInterval);
-      this.gameOver();
-      console.log(player.x, player.width, enemy.x, enemy.width);
+      this.lives--;
+      this.updateHearts();
+      enemy.element.remove();
+
+      if (this.lives <= 0) {
+        clearInterval(this.enemyInterval);
+        clearInterval(this.animationInterval);
+        this.gameOver();
+        console.log(player.x, player.width, enemy.x, enemy.width);
+      }
     }
   }
   gameOver() {

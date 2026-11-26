@@ -4,7 +4,7 @@
 }
 
 .screen {
-   width: 90vw;
+  width: 90vw;
   height: 60vh;
   display: flex;
   position: relative;
@@ -12,17 +12,24 @@
   position: relative;
 }
 
- .loseScreen,
- .winScreen,
+.loseScreen,
+.winScreen,
 .gameScreen {
-display: none;
-} 
+  display: none;
+}
 
 .startScreen {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image: url(/images/introscreen.jpg);
+  background-size: cover;
+}
+
+.gameScreen {
+  background-image: url(/images/gamebackground.jpg);
+  background-size: cover;
 }
 
 .main {
@@ -30,4 +37,27 @@ display: none;
   justify-content: center;
   align-items: center;
   min-height: 95vh;
+}
+
+.title {
+  color: white;
+  margin-bottom: 40px;
+}
+
+.text {
+  color: white;
+}
+
+.livesDisplay {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 10;
+  font-size: 28px;
+  letter-spacing: 4px;
+  text-shadow: -2.5px 0 lightcoral, 0 2.5px lightcoral, 2.5px 0 wheat, 0 -2.5px wheat;
+}
+
+.player {
+filter: drop-shadow( 0 0 10px gold);
 }
