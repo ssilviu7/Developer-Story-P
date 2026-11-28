@@ -14,6 +14,13 @@ window.addEventListener("load", () => {
 
   document.addEventListener("keydown", (e) => {
     console.log(e.key);
+    if (!game || !game.player) return;
+
+    if (
+      [" ", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)
+    ) {
+      e.preventDefault();
+    }
     if (e.key === "ArrowUp") {
       game.player.moveUp();
     }
@@ -25,6 +32,9 @@ window.addEventListener("load", () => {
     }
     if (e.key === "ArrowRight") {
       game.player.moveRight();
+    }
+    if (e.key === " ") {
+      game.shoot();
     }
   });
 });

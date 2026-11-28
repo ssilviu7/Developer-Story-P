@@ -11,6 +11,15 @@ class Game {
     this.animationInterval = null;
     this.lives = 3;
     this.updateHearts();
+    this.projectiles = [];
+  }
+
+  shoot() {
+    const startX = this.player.x + 5;
+    const startY = this.player.y + 8;
+
+    const projectile = new Projectile(startX, startY);
+    this.projectiles.push(projectile);
   }
 
   startGame() {
@@ -35,6 +44,30 @@ class Game {
   }
 
   animate() {
+    for (let i = this.projectiles.length - 1; i >= 0; i--) {
+      const projectile = this.projectiles[i];
+      projectile.move();
+
+      if (projectile.x > 100) {
+        projectile.element.remove();
+        this.projectiles.splice(i, 1);
+      }
+
+      for (let j = this.enemies.length - 1; j >= 0; j--) {
+        const enemy = this.enemies[j];
+
+        if (this.isColliding(projectile, enemy)) {
+          projectile.element.remove();
+          this.projectiles.splice(i, 1);
+
+          enemy.element.remove();
+          this.enemies.splice(j, 1);
+
+          break;
+        }
+      }
+    }
+
     for (let i = this.enemies.length - 1; i >= 0; i--) {
       const enemy = this.enemies[i];
       if (enemy.x <= 0) {
@@ -63,6 +96,8 @@ class Game {
       this.lives--;
       this.updateHearts();
       enemy.element.remove();
+      const index = this.enemies.indexOf(enemy);
+      if (index > -1) this.enemies.splice(index, 1);
 
       if (this.lives <= 0) {
         clearInterval(this.enemyInterval);
@@ -72,6 +107,19 @@ class Game {
       }
     }
   }
+
+  isColliding(objA, objB) {
+    const a = objA.element.getBoundingClientRect();
+    const b = objB.element.getBoundingClientRect();
+
+    return (
+      a.left < b.right &&
+      a.right > b.left &&
+      a.top < b.bottom &&
+      a.bottom > b.top
+    );
+  }
+
   gameOver() {
     this.gameScreen.style.display = "none";
     this.loseScreen.style.display = "flex";
