@@ -7,7 +7,7 @@ class Player {
     this.y = 50;
     this.width = 155;
     this.height = 155;
-    this.studentimg = "/images/student3.png";
+    this.studentimg = "../images/student3.png";
 
     this.element.style.position = "absolute";
     this.element.style.width = `${this.width}px`;
