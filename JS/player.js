@@ -5,8 +5,8 @@ class Player {
     this.element.classList.add("player");
     this.x = 0;
     this.y = 50;
-    this.width = 115;
-    this.height = 115;
+    this.width = 155;
+    this.height = 155;
     this.studentimg = "/images/student3.png";
 
     this.element.style.position = "absolute";

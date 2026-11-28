@@ -6,7 +6,7 @@ class Projectile {
 
         this.x = x;
         this.y = y;
-        this.speed = 1;
+        this.speed = 1.5;
 
         this.element.style.left = `${this.x}%`;
         this.element.style.top = `${this.y}%`;
