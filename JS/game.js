@@ -12,11 +12,18 @@ class Game {
     this.lives = 3;
     this.updateHearts();
     this.projectiles = [];
+    this.score = 0;
+    this.scoreElement = document.querySelector(".scoreDisplay");
+    this.updateScore();
+  }
+
+  updateScore() {
+    this.scoreElement.textContent = `Score: ${this.score}`;
   }
 
   shoot() {
-    const startX = this.player.x + 5;
-    const startY = this.player.y + 8;
+    const startX = this.player.x + 3;
+    const startY = this.player.y + 4;
 
     const projectile = new Projectile(startX, startY);
     this.projectiles.push(projectile);
@@ -62,6 +69,9 @@ class Game {
 
           enemy.element.remove();
           this.enemies.splice(j, 1);
+
+          this.score += 10;
+          this.updateScore();
 
           break;
         }
@@ -121,6 +131,13 @@ class Game {
   }
 
   gameOver() {
+    const finalScoreElement = document.querySelector(".finalScore");
+    finalScoreElement.textContent = `Final Score: ${this.score}`;
+
+    if (this.player) this.player.element.remove();
+    this.enemies.forEach((enemy) => enemy.element.remove());
+    this.projectiles.forEach((projectile) => projectile.element.remove());
+
     this.gameScreen.style.display = "none";
     this.loseScreen.style.display = "flex";
   }

@@ -3,6 +3,7 @@ const gameScreen = document.querySelector(".gameScreen");
 const loseScreen = document.querySelector(".loseScreen");
 const winScreen = document.querySelector(".winScreen");
 const startBtn = document.querySelector(".startBtn");
+const tryAgainBtn = document.querySelector(".tryAgainBtn");
 
 let game;
 
@@ -11,6 +12,12 @@ window.addEventListener("load", () => {
     game = new Game();
     game.startGame();
   });
+
+  tryAgainBtn.addEventListener("click", () => {
+    loseScreen.style.display = "none";
+    game = new Game();
+    game.startGame();
+  })
 
   document.addEventListener("keydown", (e) => {
     console.log(e.key);

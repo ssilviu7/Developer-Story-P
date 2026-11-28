@@ -24,12 +24,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url(/images/introscreen.jpg);
+  background-image: url(./images/introscreen.jpg);
   background-size: cover;
 }
 
 .gameScreen {
-  background-image: url(/images/gamebackground.jpg);
+  background-image: url(./images/gamebackground.jpg);
   background-size: cover;
 }
 
@@ -52,7 +52,8 @@
 .livesDisplay {
   position: absolute;
   top: 15px;
-  left: 15px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 10;
   font-size: 28px;
   letter-spacing: 4px;
@@ -74,4 +75,15 @@ filter: drop-shadow( 0 0 10px gold);
   filter: drop-shadow( 0 0 10px gold);
   rotate: 90deg;
   z-index: 5;
+}
+
+.scoreDisplay {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  z-index: 10;
+  font-size: 40px;
+  font-weight: bold;
+  color: aquamarine;
+  text-shadow: 2px 2px 0 blue;
 }
