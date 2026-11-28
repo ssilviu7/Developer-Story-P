@@ -6,7 +6,7 @@ class Enemy {
     this.y = Math.floor(Math.random() * 95);
     this.width = 75;
     this.height = 75;
-    this.enemyimage = "../images/errorenemy.png";
+    this.enemyimage = "./images/errorenemy.png";
 
     this.element.style.position = "absolute";
     this.element.style.width = `${this.width}px`;
